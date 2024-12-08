@@ -4,12 +4,13 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// Database collections
 type LoginDetails struct {
 	AuthToken string
-	Username string
+	Username  string
 }
 type CoinDetails struct {
-	Coins int64
+	Coins   int64
 	Username string
 }
 
@@ -25,12 +26,9 @@ func NewDatabase() (*DatabaseInterface, error) {
 
 	var err error = database.SetupDatabase()
 	if err != nil {
-		log.WithFields(log.Fields{
-			"error": err,
-		}).Error("Failed to setup database")
+		log.Error(err)
 		return nil, err
 	}
 
 	return &database, nil
 }
-
