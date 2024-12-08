@@ -1,0 +1,18 @@
+package handlers
+
+import (
+	"github.com/go-chi/chi"
+	chimiddle "github.com/go-chi/chi/middleware"
+	"github.com/bolehngopi/goapi/internal/handlers/middleware"
+)
+
+func Handler(r *chi.Mux) {
+	// Global Middleware
+	r.Use(chimiddle.StripSlashes)
+
+	r.Route("/account", func(router chi.Router) {
+		router.Use(middleware.Authorization)
+
+		router.Get("/coins", GetCoinBalance)
+	})
+}
