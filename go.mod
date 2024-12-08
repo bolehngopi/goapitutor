@@ -1,4 +1,4 @@
-module github.com/bolehngopi/goapi
+module github.com/bolehngopi/goapitutor
 
 go 1.22.4
 
